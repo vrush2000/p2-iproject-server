@@ -16,33 +16,319 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Invitations.init({
-    quote: DataTypes.STRING,
-    quote_src: DataTypes.STRING,
-    bride: DataTypes.STRING,
-    bride_img: DataTypes.STRING,
-    bride_nick: DataTypes.STRING,
-    bride_mother: DataTypes.STRING,
-    bride_father: DataTypes.STRING,
-    groom: DataTypes.STRING,
-    groom_img: DataTypes.STRING,
-    groom_nick: DataTypes.STRING,
-    groom_mother: DataTypes.STRING,
-    groom_father: DataTypes.STRING,
-    matrimony_name: DataTypes.STRING,
-    matrimony_date: DataTypes.DATE,
-    matrimony_time_start: DataTypes.INTEGER,
-    matrimony_time_end: DataTypes.INTEGER,
-    ceremonial_name: DataTypes.STRING,
-    ceremonial_date: DataTypes.DATE,
-    ceremonial_time_start: DataTypes.INTEGER,
-    ceremonial_time_end: DataTypes.INTEGER,
+    quote: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notNull : {
+          msg: "Quote Mohon diisi"
+        },
+        notEmpty : {
+          msg: "Quote Mohon diisi"
+        }
+      }
+    },
+    quote_src: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notNull : {
+          msg: "Sumber Quote Mohon diisi"
+        },
+        notEmpty : {
+          msg: "Sumber Quote Mohon diisi"
+        }
+      }
+    },
+    bride: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notNull : {
+          msg: "Nama Lengkap Mohon diisi"
+        },
+        notEmpty : {
+          msg: "Nama Lengkap Mohon diisi"
+        }
+      }
+    },
+    bride_img: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notNull : {
+          msg: "Foto Mohon diupload"
+        },
+        notEmpty : {
+          msg: "Foto Mohon diupload"
+        }
+      }
+    },
+    bride_nick: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notNull : {
+          msg: "Nama Panggilan Mohon diisi"
+        },
+        notEmpty : {
+          msg: "Nama Panggilan Mohon diisi"
+        }
+      }
+    },
+    bride_mother: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notNull : {
+          msg: "Nama Ibu Mohon diisi"
+        },
+        notEmpty : {
+          msg: "Nama Ibu Mohon diisi"
+        }
+      }
+    },
+    bride_father: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notNull : {
+          msg: "Nama Ayah Mohon diisi"
+        },
+        notEmpty : {
+          msg: "Nama Ayah Mohon diisi"
+        }
+      }
+    },
+    groom: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notNull : {
+          msg: "Nama Lengkap Mohon diisi"
+        },
+        notEmpty : {
+          msg: "Nama Lengkap Mohon diisi"
+        }
+      }
+    },
+    groom_img: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notNull : {
+          msg: "Foto Mohon diupload"
+        },
+        notEmpty : {
+          msg: "Foto Mohon diupload"
+        }
+      }
+    },
+    groom_nick: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notNull : {
+          msg: "Nama Panggilan Mohon diisi"
+        },
+        notEmpty : {
+          msg: "Nama Panggilan Mohon diisi"
+        }
+      }
+    },
+    groom_mother: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notNull : {
+          msg: "Nama Ibu Mohon diisi"
+        },
+        notEmpty : {
+          msg: "Nama Ibu Mohon diisi"
+        }
+      }
+    },
+    groom_father: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notNull : {
+          msg: "Nama Ayah Mohon diisi"
+        },
+        notEmpty : {
+          msg: "Nama Ayah Mohon diisi"
+        }
+      }
+    },
+    matrimony_name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notNull : {
+          msg: "Nama Acara Akad/Pemberkatan Mohon diisi"
+        },
+        notEmpty : {
+          msg: "Nama Acara Akad/Pemberkatan Mohon diisi"
+        }
+      }
+    },
+    matrimony_date: {
+      type: DataTypes.DATE,
+      allowNull: false,
+      validate: {
+        notNull : {
+          msg: "Tanggal Acara Mohon diisi"
+        },
+        notEmpty : {
+          msg: "Tanggal Acara Mohon diisi"
+        }
+      }
+    },
+    matrimony_time_start: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      validate: {
+        notNull : {
+          msg: "jam Mulai Mohon diisi"
+        },
+        notEmpty : {
+          msg: "Jam Mulai Mohon diisi"
+        }
+      }
+    },
+    matrimony_time_end: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      validate: {
+        notNull : {
+          msg: "Jam Selesai Mohon diisi"
+        },
+        notEmpty : {
+          msg: "Jam Selesai Mohon diisi"
+        }
+      }
+    },
+    ceremonial_name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notNull : {
+          msg: "Nama Acara Resepsi Mohon diisi"
+        },
+        notEmpty : {
+          msg: "Nama Acara Resepsi Mohon diisi"
+        }
+      }
+    },
+    ceremonial_date: {
+      type: DataTypes.DATE,
+      allowNull: false,
+      validate: {
+        notNull : {
+          msg: "Tanggal Acara Mohon diisi"
+        },
+        notEmpty : {
+          msg: "Tanggal Acara Mohon diisi"
+        }
+      }
+    },
+    ceremonial_time_start: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      validate: {
+        notNull : {
+          msg: "jam Mulai Mohon diisi"
+        },
+        notEmpty : {
+          msg: "Jam Mulai Mohon diisi"
+        }
+      }
+    },
+    ceremonial_time_end: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      validate: {
+        notNull : {
+          msg: "Jam Selesai Mohon diisi"
+        },
+        notEmpty : {
+          msg: "Jam Selesai Mohon diisi"
+        }
+      }
+    },
     map_location: DataTypes.TEXT,
-    photo: DataTypes.STRING,
-    story: DataTypes.STRING,
-    story_img: DataTypes.STRING,
-    wallet_bank: DataTypes.STRING,
-    wallet_no: DataTypes.INTEGER,
-    wallet_owner: DataTypes.STRING,
+    photo: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notNull : {
+          msg: "Foto Mohon diupload"
+        },
+        notEmpty : {
+          msg: "Foto Mohon diupload"
+        }
+      }
+    },
+    story: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notNull : {
+          msg: "Story Mohon diisi"
+        },
+        notEmpty : {
+          msg: "Story Mohon diisi"
+        }
+      }
+    },
+    story_img: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notNull : {
+          msg: "Foto Mohon diupload"
+        },
+        notEmpty : {
+          msg: "Foto Mohon diupload"
+        }
+      }
+    },
+    wallet_bank: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notNull : {
+          msg: "Nama Bank Mohon diisi"
+        },
+        notEmpty : {
+          msg: "Nama Bank Mohon diisi"
+        }
+      }
+    },
+    wallet_no: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      validate: {
+        notNull : {
+          msg: "Nomor Rekening Mohon diisi"
+        },
+        notEmpty : {
+          msg: "Nomor Rekening Mohon diisi"
+        }
+      }
+    },
+    wallet_owner:{
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notNull : {
+          msg: "Nama Pemilik Rekening Mohon diisi"
+        },
+        notEmpty : {
+          msg: "Nama Pemilik Rekening Mohon diisi"
+        }
+      }
+    },
     MusicId: DataTypes.INTEGER,
     UserId: DataTypes.INTEGER,
   }, {

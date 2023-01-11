@@ -15,9 +15,39 @@ module.exports = (sequelize, DataTypes) => {
       Users.hasMany(models.Greets)
     }
   }
-  Users.init({
-    email: DataTypes.STRING,
-    password: DataTypes.STRING,
+  Users.init({    
+    email: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notNull : {
+          msg: "Email is Required!"
+        },
+        notEmpty : {
+          msg: "Email is Required!"
+        },
+        isEmail: {            
+          msg: "Format Email Invalid!"
+        },
+      }
+    },
+    
+    password: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty : {
+          msg: "Password is Required!"
+        },
+        notNull : {
+          msg: "Password is Required!"
+        },
+        len: {
+            args: [5,20],
+            msg: "Password min. 5 characters"
+        }
+      }
+    },
     role: DataTypes.STRING,
     InvitationId: DataTypes.INTEGER
   }, {

@@ -15,9 +15,42 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Greets.init({
-    guest: DataTypes.STRING,
-    presence: DataTypes.STRING,
-    greeting: DataTypes.TEXT,
+    guest: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notNull : {
+          msg: "Nama Mohon diisi"
+        },
+        notEmpty : {
+          msg: "Nama Mohon diisi"
+        }
+      }
+    },
+    presence: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notNull : {
+          msg: "Kehadiran mohon dipilih"
+        },
+        notEmpty : {
+          msg: "Kehadiran Mohon dipilih"
+        }
+      }
+    },
+    greeting: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notNull : {
+          msg: "Ucapan Mohon diisi"
+        },
+        notEmpty : {
+          msg: "Ucapan Mohon diisi"
+        }
+      }
+    },
     date: DataTypes.DATE,
     UserId: DataTypes.INTEGER,
   }, {

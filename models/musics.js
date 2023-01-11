@@ -15,9 +15,42 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Musics.init({
-    band: DataTypes.STRING,
-    song: DataTypes.STRING,
-    song_src: DataTypes.STRING
+    band: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notNull : {
+          msg: "Nama Band Mohon diisi"
+        },
+        notEmpty : {
+          msg: "Nama band Mohon diisi"
+        }
+      }
+    },
+    song: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notNull : {
+          msg: "Judul Lagu Mohon diisi"
+        },
+        notEmpty : {
+          msg: "Judul Lagu Mohon diisi"
+        }
+      }
+    },
+    song_src: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notNull : {
+          msg: "Source Url Lagu Mohon diisi"
+        },
+        notEmpty : {
+          msg: "Source Url Lagu Mohon diisi"
+        }
+      }
+    },
   }, {
     sequelize,
     modelName: 'Musics',
