@@ -50,6 +50,19 @@ module.exports = (sequelize, DataTypes) => {
       }
     },
     role: DataTypes.STRING,
+    status: DataTypes.STRING,
+    link_invitation: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notNull : {
+          msg: "Link Undangan Mohon diisi"
+        },
+        notEmpty : {
+          msg: "Link Undangan Mohon diisi"
+        }
+      }
+    },
   }, {
     sequelize,
     modelName: 'Users',
@@ -57,7 +70,9 @@ module.exports = (sequelize, DataTypes) => {
 
 
   Users.beforeCreate((user) => {
-    user.password = hashPassword(user.password)
+    user.password = hashPassword(user.password)    
+    user.status = "silver"
+    user.link_invitation = "-"
   })
 
   return Users;
