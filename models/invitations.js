@@ -334,10 +334,10 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       validate: {
         notNull : {
-          msg: "Mohon Pilih Lagu terlebih dahulu"
+          msg: "Mohon Pilih Lagu Terlebih Dahulu"
         },
         notEmpty : {
-          msg: "Mohon Pilih Lagu terlebih dahulu"
+          msg: "Mohon Pilih Lagu Terlebih Dahulu"
         }
       }
     },

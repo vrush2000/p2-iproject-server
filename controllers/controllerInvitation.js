@@ -107,6 +107,47 @@ class Controller{
         }
     }
 
+
+    static async addInvitation(req, res, next){        
+        try {
+            const UserId = req.user.id;
+            const {
+                    quote, quote_src,
+                    bride, bride_img, bride_nick, bride_mother, bride_father,
+                    groom, groom_img, groom_nick, groom_mother, groom_father,
+                    matrimony_name, matrimony_date, matrimony_time_start, matrimony_time_end,
+                    ceremonial_name, ceremonial_date, ceremonial_time_start, ceremonial_time_end,
+                    map_location,
+                    photo,
+                    story, story_img,
+                    wallet_bank, wallet_no, wallet_owner,
+                    MusicId
+                } = req.body
+            
+            await Invitations.create(
+                { 
+                    quote, quote_src,
+                    bride, bride_img, bride_nick, bride_mother, bride_father,
+                    groom, groom_img, groom_nick, groom_mother, groom_father,
+                    matrimony_name: matrimony_name || 'Akad', matrimony_date, matrimony_time_start, matrimony_time_end,
+                    ceremonial_name: ceremonial_name || 'Resepsi' , ceremonial_date, ceremonial_time_start, ceremonial_time_end,
+                    map_location,
+                    photo,
+                    story, story_img,
+                    wallet_bank, wallet_no, wallet_owner,
+                    MusicId, UserId
+                }
+                )               
+
+
+            res.status(201).json({ message: `Undangan ${bride_nick} & ${groom_nick} Berhasil dibuat`})
+        } catch (error) {
+            console.log(error);
+            next(error)
+        }
+    }
+
+
 }
 
 module.exports = Controller
