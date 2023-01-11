@@ -10,11 +10,11 @@ async function handleError(error, req, res, next){
             break;
         case "EmailOrPasswordRequired":
             status = 400
-            msg = 'Email or Password Required'
+            msg = 'Email atau Password Mohon diisi'
             break;
         case "InvalidCredentials":
             status = 401
-            msg = 'Invalid Email or Password'
+            msg = 'Email atau Password Salah'
             break
         case "Unauthenticated":
         case "JsonWebTokenError":
@@ -27,7 +27,7 @@ async function handleError(error, req, res, next){
             break
         case "notFound":
             status = 404
-            msg = 'Data Not Found'
+            msg = 'Data tidak ditemukan'
             break
     }
 

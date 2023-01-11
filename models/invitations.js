@@ -329,7 +329,18 @@ module.exports = (sequelize, DataTypes) => {
         }
       }
     },
-    MusicId: DataTypes.INTEGER,
+    MusicId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      validate: {
+        notNull : {
+          msg: "Mohon Pilih Lagu terlebih dahulu"
+        },
+        notEmpty : {
+          msg: "Mohon Pilih Lagu terlebih dahulu"
+        }
+      }
+    },
     UserId: DataTypes.INTEGER,
   }, {
     sequelize,
