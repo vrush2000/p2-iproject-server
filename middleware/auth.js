@@ -18,7 +18,6 @@ async function authentication(req, res, next) {
         req.user = {
             role: user.role,
             id: user.id,
-            username: user.email
         }
         next()
     } catch (error) {
@@ -29,7 +28,4 @@ async function authentication(req, res, next) {
 
 module.exports = {
     authentication, 
-    authorization, 
-    authorizationCustomer,
-    authorizationPatch
 }
