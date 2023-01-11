@@ -72,7 +72,6 @@ module.exports = (sequelize, DataTypes) => {
   Users.beforeCreate((user) => {
     user.password = hashPassword(user.password)    
     user.status = "silver"
-    user.link_invitation = "-"
   })
 
   return Users;
