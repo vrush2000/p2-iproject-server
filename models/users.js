@@ -49,7 +49,6 @@ module.exports = (sequelize, DataTypes) => {
       }
     },
     role: DataTypes.STRING,
-    InvitationId: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'Users',
