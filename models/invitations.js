@@ -17,7 +17,7 @@ module.exports = (sequelize, DataTypes) => {
   }
   Invitations.init({
     quote: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: false,
       validate: {
         notNull : {

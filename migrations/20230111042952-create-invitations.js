@@ -10,7 +10,7 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       quote: {
-        type: Sequelize.STRING,
+        type: Sequelize.TEXT,
         allowNull: false,
       },
       quote_src: {
