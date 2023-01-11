@@ -24,6 +24,26 @@ class Controller{
         }
     }
 
+    
+    static async delMusic(req, res, next){
+        const { id } = req.params
+        try {
+            let data = await Musics.findByPk(id)
+            await Musics.destroy({
+                where: { id }
+            })
+                
+            if (!data) {
+                throw { name: 'notFound'}
+            }
+
+            res.status(200).json({ message: `Lagu berhasil dihapus`})
+            
+        } catch (error) {
+            next(error)
+        }
+    }
+
 }
 
 module.exports = Controller
