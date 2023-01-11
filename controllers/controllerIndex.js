@@ -1,6 +1,9 @@
 const { Users } = require('../models');
 const { compareHash } = require('../helper/bcrypt');
 const { createToken } = require('../helper/jwt');
+const { OAuth2Client } = require('google-auth-library');
+const CLIENT_ID = process.env.CLIENT_ID
+const client = new OAuth2Client(CLIENT_ID)
 
 class Controller{
     static async register(req, res, next){        
@@ -40,6 +43,38 @@ class Controller{
             }
 
             let access_token = createToken(payload)
+            res.status(200).json({access_token, email: user.email, role: user.role})
+
+        } catch (error) {
+            next(error)
+        }
+    }
+
+    
+    static async googleSignIn(req, res, next){
+        try {
+            const ticket = await client.verifyIdToken({
+                idToken: req.headers.google_auth_token,
+                audience: CLIENT_ID
+            })
+
+            const payload = ticket.getPayload()
+            const email = payload.email
+            console.log(payload);
+
+            const [ user, password]= await User.findOrCreate({
+            where: {email},
+            defaults : {
+                email,
+                password: "default",
+                role: "customer",
+            },
+            hook: false
+            })
+            let access_token = createToken({
+                id: user.id
+            })
+
             res.status(200).json({access_token, email: user.email, role: user.role})
 
         } catch (error) {
