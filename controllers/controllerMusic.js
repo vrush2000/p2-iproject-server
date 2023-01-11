@@ -1,4 +1,4 @@
-const { Musics } = require("../models")
+const { Musics } = require("../models");
 
 class Controller{    
     static async getMusic(req, res, next){
@@ -8,6 +8,19 @@ class Controller{
         } catch (error) {
             console.log(error);
             next(error)
+        }
+    }
+
+    
+
+    static async addMusic(req, res, next){
+        try {
+            const { band, song, song_src } = req.body
+            let data = await Musics.create({ band, song, song_src })
+            res.status(201).json(data)
+        } catch (error) {
+            next(error)
+
         }
     }
 
