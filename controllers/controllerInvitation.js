@@ -68,7 +68,7 @@ class Controller{
 
     static async editInvitation(req, res, next){        
         try {
-            const { id } = req.params 
+            const { id } = req.params
             const UserId = req.user.id;
             const {
                     quote, quote_src,
@@ -83,6 +83,12 @@ class Controller{
                     MusicId
                 } = req.body
             
+                let data = await Invitations.findByPk(id)
+
+                if (!data) {
+                    throw { name: "notFound" }
+                }
+
             await Invitations.update(
                 { 
                     quote, quote_src,
