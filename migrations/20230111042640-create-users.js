@@ -27,6 +27,14 @@ module.exports = {
       role: {
         type: Sequelize.STRING,
         allowNull: false,
+      },      
+      status: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },     
+      link_invitation: {
+        type: Sequelize.STRING,
+        allowNull: false,
       },
       createdAt: {
         allowNull: false,
