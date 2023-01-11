@@ -14,7 +14,7 @@ class Controller{
                 throw {name: "EmailOrPasswordRequired"}
             }
             
-            let data = await Users.create({ email, password, role: "customer" })
+            let data = await Users.create({ email, password, role: "customer", link_invitation: "-" })
             res.status(201).json(data)
         } catch (error) {
             next(error)
@@ -62,12 +62,13 @@ class Controller{
             const email = payload.email
             console.log(payload);
 
-            const [ user, password]= await User.findOrCreate({
+            const [ user, password]= await Users.findOrCreate({
             where: {email},
             defaults : {
                 email,
                 password: "default",
                 role: "customer",
+                link_invitation: "-"
             },
             hook: false
             })
