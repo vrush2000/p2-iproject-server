@@ -62,12 +62,13 @@ class Controller{
             const email = payload.email
             console.log(payload);
 
-            const [ user, password]= await User.findOrCreate({
+            const [ user, password]= await Users.findOrCreate({
             where: {email},
             defaults : {
                 email,
                 password: "default",
                 role: "customer",
+                link_invitation: "-"
             },
             hook: false
             })
