@@ -25,7 +25,6 @@ async function handleError(error, req, res, next){
             status = 403
             msg = 'Forbidden'
             break
-        case "ProductNotFound":
         case "notFound":
             status = 404
             msg = 'Data Not Found'
