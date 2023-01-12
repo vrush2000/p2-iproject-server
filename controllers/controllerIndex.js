@@ -1,6 +1,7 @@
 const { Users } = require('../models');
 const { compareHash } = require('../helper/bcrypt');
 const { createToken } = require('../helper/jwt');
+const { sendEmail } = require("../helper/nodemailer")
 const { OAuth2Client } = require('google-auth-library');
 const CLIENT_ID = process.env.CLIENT_ID
 const client = new OAuth2Client(CLIENT_ID)
@@ -13,7 +14,6 @@ class Controller{
             if (!email || !password) {
                 throw {name: "EmailOrPasswordRequired"}
             }
-            
             let data = await Users.create({ email, password, role: "customer", link_invitation: "-" })
             res.status(201).json(data)
         } catch (error) {
@@ -75,7 +75,8 @@ class Controller{
             let access_token = createToken({
                 id: user.id
             })
-
+            
+            sendEmail(email)
             res.status(200).json({access_token, email: user.email, role: user.role})
 
         } catch (error) {
