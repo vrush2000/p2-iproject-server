@@ -25,11 +25,11 @@ module.exports = {
         type: Sequelize.DATE,
         allowNull: false,
       },
-      UserId: {
+      InvitationId: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references:{
-          model: 'Users',
+          model: 'Invitations',
           key: 'id'
         }, 
       },

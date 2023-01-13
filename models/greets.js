@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Greets.belongsTo(models.Users)
+      Greets.belongsTo(models.Invitations)
     }
   }
   Greets.init({
@@ -52,7 +52,7 @@ module.exports = (sequelize, DataTypes) => {
       }
     },
     date: DataTypes.DATE,
-    UserId: DataTypes.INTEGER,
+    InvitationId: DataTypes.INTEGER,
   }, {
     sequelize,
     modelName: 'Greets',

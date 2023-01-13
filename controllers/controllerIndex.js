@@ -84,6 +84,35 @@ class Controller{
         }
     }
 
+
+    static async PatchStatus(req, res, next){
+        try {
+            const id = req.user.id;       
+            await Users.update(
+                {status : 'diamond'},
+                { 
+                    where: {id}, 
+                    hook: false
+                })
+            res.status(200).json({ message: `status Active`})
+        } catch (error) {
+            next(error)
+        }
+    }
+
+    static async getUser(req, res, next){
+        try {                  
+            const id = req.user.id;
+           let data =  await Users.findOne({where: {id},
+            attributes: {
+                exclude: ['password','createdAt', 'updatedAt']
+            }})
+            res.status(200).json(data)
+        } catch (error) {
+            next(error)
+        }
+    }
+
 }
 
 module.exports = Controller

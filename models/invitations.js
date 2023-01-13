@@ -13,6 +13,7 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       Invitations.belongsTo(models.Users)
       Invitations.belongsTo(models.Musics)
+      Invitations.hasMany(models.Greets)
     }
   }
   Invitations.init({
